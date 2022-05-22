@@ -33,7 +33,7 @@ const Footer = () => {
                     <div className='flex '>
                         <Link to='/' className="link text-3xl link-hover"><FaFacebook></FaFacebook></Link>
                         <Link to='/' className="link text-3xl  link-hover"><AiFillLinkedin></AiFillLinkedin></Link>
-                        <Link to='/' className="link  text-3xl link-hover"><AiFillGithub></AiFillGithub></Link>
+                        <Link to='/'  className="link  text-3xl link-hover"><AiFillGithub></AiFillGithub></Link>
                     </div>
                 </div>
                 
