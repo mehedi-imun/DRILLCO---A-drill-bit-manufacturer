@@ -1,21 +1,30 @@
 
-import axios from "axios";
 import { useEffect, useState } from "react"
 
 const useToken = (user) => {
-    const email = user?.user?.email
-    const [token, setToken] = useState('');
+    const [token, setToken] = useState('')
     useEffect(() => {
-        const getToken = async () => {
-            if (email) {
-                const { data } = await axios.post('http://localhost:5000/get-token', { email });
-                setToken(data)
-                localStorage.setItem('accessToken', data)
-            }
-        }
-        getToken()
+        const email = user?.user?.email;
+        const currentUser = {
+            email: email,
+        };
+        if (email) {
+            fetch(`http://localhost:5000/users/${email}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
 
-    }, [email])
+                },
+                body: JSON.stringify(currentUser)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const userToken = data.accessToken;
+                    localStorage.setItem('accessToken', userToken)
+                    setToken(userToken)
+                })
+        }
+    }, [user])
 
     return [token]
 }

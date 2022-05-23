@@ -52,16 +52,7 @@ const Signup = () => {
         if (password === confirmPassword) {
             await createUserWithEmailAndPassword(email, password)
             await updateProfile({ displayName: name });
-            await toast.success('successfully create account', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-
-            });
+             toast.success('successfully create account');
             // on submit reset input
             reset()
 

@@ -6,10 +6,11 @@ import auth from '../../../firebase.init';
 import Loading from '../Loading/Loading';
 const Header = () => {
     const [user, loading] = useAuthState(auth);
+ 
     const userImg = user?.photoURL;
     const name = user?.displayName?.slice(0, 1);
 
-    if (loading) {
+    if (loading ) {
         return <Loading></Loading>
     }
     return (
