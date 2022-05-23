@@ -39,7 +39,7 @@ const Login = () => {
     // error tag 
     if (error || googleError) {
 
-        errorTag = <p className='text-danger'>Error: {error.message}</p>;
+        errorTag = <p className=' text-red-700 mt-5'>Error: {error.message}</p>;
 
     }
 

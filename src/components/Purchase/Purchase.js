@@ -4,8 +4,10 @@ import { useParams } from 'react-router-dom';
 import Loading from '../Shared/Loading/Loading';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import PurchaseModal from './PurchaseModal';
+import { ToastContainer } from 'react-toastify';
 const Purchase = () => {
     const [quantity, setQuantity] = useState(1000)
+    const [modal,setModal]=useState(true)
     const { id } = useParams()
     const url = `http://localhost:5000/product/${id}`
 
@@ -61,8 +63,21 @@ const Purchase = () => {
                     </div>
                 </div>
             </div>
-            <PurchaseModal product={product} quantity={quantity}>
-            </PurchaseModal>
+            {
+                modal && <PurchaseModal setModal={setModal}  product={product} quantity={quantity}>
+                </PurchaseModal>
+            }
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </div>
     );
 };
