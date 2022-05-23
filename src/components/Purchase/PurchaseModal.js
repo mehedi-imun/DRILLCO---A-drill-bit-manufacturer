@@ -4,10 +4,10 @@ import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
-const PurchaseModal = ({ product, quantity, setModal }) => {
+const PurchaseModal = ({ product, quantity, setModal, refetch }) => {
     const { register, handleSubmit, reset } = useForm();
     const [user, loading] = useAuthState(auth);
-    const { name, price, } = product;
+    const { name, price, _id, availableQuantity } = product;
     const totalPrice = price * quantity
     const onSubmit = (userData) => {
         const order = {
@@ -32,9 +32,27 @@ const PurchaseModal = ({ product, quantity, setModal }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    setModal(false)
-                    reset()
-                    toast.success('successfully ordered')
+
+
+                    const updateQuantity = availableQuantity - quantity;
+                    fetch(`http://localhost:5000/update-quantity/${_id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify({ updateQuantity })
+                    }).then(res => res.json())
+                        .then(data => {
+                            if (data.modifiedCount > 0) {
+                                refetch()
+                                setModal(null)
+                                reset()
+                                toast.success('successfully ordered please check my order page')
+
+                            }
+                        })
+
 
                 }
             })
@@ -50,9 +68,9 @@ const PurchaseModal = ({ product, quantity, setModal }) => {
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <label htmlFor="purchase-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="font-bold text-sm text-primary">{product?.name}</h3>
+                    <h3 className="font-bold text-sm px-5 text-primary">{product?.name}</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className=' flex justify-center items-center flex-col mt-5'>
-                        <p className=" w-full mb-2 max-w-xs" >{user?.displayName}</p>
+                        <input value={user?.displayName} disabled className="input input-bordered mb-2  w-full max-w-xs" />
                         <input value={user?.email} disabled className="input input-bordered mb-2  w-full max-w-xs" />
                         <input value={`Quantity:${quantity} Pieces`} readOnly className="input input-bordered mb-2  w-full max-w-xs" />
                         <input value={`Total: $${totalPrice}`} readOnly className="input input-bordered mb-2  w-full max-w-xs" />
@@ -62,6 +80,7 @@ const PurchaseModal = ({ product, quantity, setModal }) => {
                     </form>
                 </div>
             </div>
+
         </div>
 
     );
