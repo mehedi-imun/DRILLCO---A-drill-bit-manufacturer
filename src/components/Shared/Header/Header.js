@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import Loading from '../Loading/Loading';
 const Header = () => {
+    const [user, loading] = useAuthState(auth);
+    const userImg = user?.photoURL;
+    const name = user?.displayName?.slice(0,1);
+
+    if(loading){
+        return <Loading></Loading>
+    }
     return (
         <div className='  lg:px-12 bg-[#313132]  '>
             <div className="navbar  ">
@@ -14,18 +24,23 @@ const Header = () => {
                             <li><Link to='/'>Blog</Link></li>
                             <li> <Link to='/' className="justify-between">  Portfolio </Link></li>
                             <li><Link to='/' >tools</Link></li>
-                            <div className="dropdown dropdown-end">
+                            {user? <div className="dropdown dropdown-end">
                                 <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-25 rounded-full">
-                                        <img src="https://api.lorem.space/image/face?hash=33791" alt='' />
+                                    {userImg? <img src={userImg} alt='' />  : <h3 className="w-10  text-white  text-3xl border-2  ">{name}</h3> }
                                     </div>
                                 </label>
                                 <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 ">
-                                    <li><Link to='/'>Item 3</Link></li>
-                                    <li><Link to='/'>Item 3</Link></li>
-                                    <li><Link to='/'>Item 3</Link></li>
+                                <li><Link to='/'>view Profile</Link></li>
+                                <li><button  onClick={()=>signOut(auth)}>Logout</button></li>
                                 </ul>
-                            </div>
+                            </div> :<div  className="navbar-end ">
+                        <div className="dropdown dropdown-end ">
+                            <ul>
+                                <li><Link className=' text-black' to='/login'>Login</Link></li>
+                            </ul>
+                        </div>
+                    </div>}
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-xl text-white">DRILLCO</Link>
@@ -36,21 +51,33 @@ const Header = () => {
                         <li ><Link className='' to='/'> Portfolio</Link></li>
                         <li><Link to='/'>tool</Link></li>
                     </ul>
+                    
                 </div>
-                <div className="navbar-end hidden lg:flex">
-                    <div className="dropdown dropdown-end ">
-                        <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="https://api.lorem.space/image/face?hash=33791" alt='' />
-                            </div>
-                        </label>
-                        <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                            <li><Link to='/'>Item 3</Link></li>
-                            <li><Link to='/'>Item 3</Link></li>
-                            <li><Link to='/'>Item 3</Link></li>
-                        </ul>
+                {user ?
+                    <div className="navbar-end hidden lg:flex">
+
+                        <div className="dropdown dropdown-end ">
+
+                            <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    {userImg? <img src={userImg} alt='' />  : <h3 className="w-10  text-white  text-3xl border-2  ">{name}</h3> }
+                                </div>
+                            </label>
+                            <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                                <li><Link to='/'>view Profile</Link></li>
+                                <li><button  onClick={()=>signOut(auth)}>Logout</button></li>
+                            </ul>
+                        </div>
+
+
                     </div>
-                </div>
+                    :
+                    <div  className="navbar-end hidden lg:flex">
+                        <div className="dropdown dropdown-end hidden lg:flex  ">
+                            <Link className=' text-base-100' to='/login'>Login</Link>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     );
