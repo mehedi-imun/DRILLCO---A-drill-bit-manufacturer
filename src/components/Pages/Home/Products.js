@@ -15,9 +15,9 @@ const Products = () => {
     }
 
     return (
-        <div className=' bg-indigo-50 '>
-            <h3 className=' text-center text-2xl pt-5 text-secondary font-bold'>Drill bits</h3>
-            <div className=' grid lg:grid-cols-3 grid-cols-1 gap-10 mt-5   px-12 pb-16 '>
+        <div className=''>
+            <h3 className=' text-center text-2xl pt-5 text-secondary font-bold'>Our products</h3>
+            <div className=' grid lg:grid-cols-3 grid-cols-1 gap-10 mt-5   px-12 pb-5'>
                 {
                     products?.map(product => <ProductCard
                         key={product._id}
@@ -26,6 +26,7 @@ const Products = () => {
                     </ProductCard>)
                 }
             </div>
+           <dir className='text-right px-12'> <button className='btn btn-link text-secondary'>see more</button></dir>
         </div>
     );
 };

@@ -15,7 +15,7 @@ import MyOrders from './components/Pages/Dashboard/MyOrders';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
 import MyReview from './components/Pages/Dashboard/MyReview';
 import Home from './components/Pages/Home/Home';
-import Purchase from './components/Purchase/Purchase';
+import Purchase from './components/Pages/Purchase/Purchase'
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 

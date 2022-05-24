@@ -6,8 +6,8 @@ const Footer = () => {
     const today = new Date();
     const year = today.getFullYear();
     return (
-        <div>
-            <footer className="footer p-10 bg-base-100 text-base-content">
+        <div className='mt-12'>
+            <footer className="footer p-10 bg-primary  text-white">
                 <div>
                     <span to='/' className="footer-title">Services</span>
                     <Link to='/' className="link link-hover">on time delivery</Link>
@@ -38,9 +38,9 @@ const Footer = () => {
                 </div>
                 
             </footer>
-            <div className='mb-10'>
+            <div className=' pb-10 bg-base-200'>
                     <hr className='w-100 ' />
-                    <p className='text-center  mt-5'>
+                    <p className='text-center   mt-5'>
                         &copy; DRILLCO {year} All rights reserved.</p>
                 </div>
         </div>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
-import Loading from '../Shared/Loading/Loading';
+import Loading from '../../Shared/Loading/Loading';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import PurchaseModal from './PurchaseModal';
 import { ToastContainer } from 'react-toastify';
 import { signOut } from 'firebase/auth';
-import auth from '../../firebase.init';
+import auth from '../../../firebase.init';
 const Purchase = () => {
     const navigate = useNavigate()
     const [error, setError] = useState(``)

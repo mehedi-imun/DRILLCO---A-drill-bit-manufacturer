@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
-import Loading from '../Shared/Loading/Loading';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 const PurchaseModal = ({ product, quantity, setModal, refetch }) => {

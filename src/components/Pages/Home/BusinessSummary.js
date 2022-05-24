@@ -7,8 +7,8 @@ import bg from '../../../assets/images/bg.png'
 const BusinessSummary = () => {
     return (
         <div style={{ backgroundImage: `url(${bg})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover', }} className='pt-12 pb-12 '>
-            <h3 className='text-xl lg:text-4xl text-center capitalize text-secondary'>millions peoples business trust us</h3>
-            <div className=" grid gap-5 lg:grid-cols-4 justify-items-center mt-12">
+            <h3 className='text-xl lg:text-4xl text-center capitalize text-secondary '>millions peoples business trust us</h3>
+            <div className=" grid gap-5 lg:grid-cols-4 justify-items-center mt-32">
                 <div className=" shadow-lg rounded-xl w-[200px] flex flex-col justify-center items-center ">
                     <span className=' text-secondary text-6xl my-5'><FiFlag></FiFlag> </span>
                     <div className=" text-5xl font-bold">32</div>
