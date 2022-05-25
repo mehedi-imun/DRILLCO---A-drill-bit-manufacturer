@@ -1,12 +1,13 @@
 import React from 'react';
 import { FcCancel } from 'react-icons/fc';
 import { MdOutlinePayment } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const MyOrderTable = ({product,index,refetch}) => {
-    const{price,productName,orderedQuantity,userEmail}=product;
-
-    const handleDEleteOrder=()=>{
+const MyOrderTable = ({ product, index, refetch}) => {
+    const { price, productName, orderedQuantity, userEmail ,_id,paid,transactionID } = product;
+    const navigate= useNavigate()
+    const handleDEleteOrder = () => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be cancel order??",
@@ -15,39 +16,44 @@ const MyOrderTable = ({product,index,refetch}) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, Cancel Order!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
 
-             const ulr =`http://localhost:5000/order/${userEmail}`;
-             fetch(ulr,{
-                 method:'DELETE',
-                 headers: {
-                    'authorization': `Barer ${localStorage.getItem('accessToken')}`
-                }
-             })
-             .then(res => res.json())
-             .then(data=> {
-                 if(data.deletedCount >0){
-                    Swal.fire(
-                        'Cancel Order!',
-                        'Your order has been cancel',
-                        'success'
-                      )
-                      refetch()
-                 }
-             })
-              
+                const ulr = `http://localhost:5000/order/${userEmail}`;
+                fetch(ulr, {
+                    method: 'DELETE',
+                    headers: {
+                        'authorization': `Barer ${localStorage.getItem('accessToken')}`
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Cancel Order!',
+                                'Your order has been cancel',
+                                'success'
+                            )
+                            refetch()
+                        }
+                    })
+
             }
-          })
+        })
     }
     return (
         <tr>
-            <th>{index+1}</th>
-            <td>{productName.slice(0,25)}</td>
+            <th>{index + 1}</th>
+            <td>{productName.slice(0, 25)}</td>
             <td>{orderedQuantity}</td>
             <td>$ {price}</td>
-            <td><button onClick={()=>handleDEleteOrder()} class="btn btn-sm  text-2xl">< FcCancel/></button></td>
-            <td><button class="btn btn-sm text-2xl "><MdOutlinePayment /> </button></td>
+            <td>
+                { paid ? <>{transactionID}</> : 
+                    <button  onClick={() => handleDEleteOrder()} className="btn btn-sm  text-2xl">< FcCancel /></button>}
+            </td>
+            <td>
+                { paid ? <p>paid</p> :<button onClick={()=>navigate(`/dashboard/payment/${_id}`)} className="btn btn-sm  ">< MdOutlinePayment className='text-xl' /> pay </button>}
+            </td>
         </tr>
     );
 };

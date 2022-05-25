@@ -28,36 +28,36 @@ const MyPortfolio = () => {
                     </div>
                 </div>
             </section>
-            <section id='about' class="about-section sec-padding mt-5">
-                <div class="container">
-                    <div class="flex flex-wrap">
-                        <div class="section-title">
+            <section id='about' className="about-section sec-padding mt-5">
+                <div className="container">
+                    <div className="flex flex-wrap">
+                        <div className="section-title">
                             <h2>about me</h2>
                         </div>
 
-                        <div class="about-img lg:w-[40%] px-[15px]">
-                            <div class="img-box">
+                        <div className="about-img lg:w-[40%] px-[15px]">
+                            <div className="img-box">
                                 <img className='' src={about} alt="" />
                             </div>
                         </div>
-                        <div class="about-text lg:w-[60%] px-[15px] mt-12">
+                        <div className="about-text lg:w-[60%] px-[15px] mt-12">
                             <p className=' text-xl'> I am  mahaedi imun anik , I am from Bangladesh. I stayed in Lakshmipur with my family- my mother , my sister and my wife.  .. last one year. I will learn, web development.
                                 I know, react, MongoDB,  Express.js, node.js, tailwind, firebase, Axios, react-query, more </p>
-                                <h4  className=' text-2xl mt-5  mb-5'>skills </h4>
-                            <div class="flex flex-wrap justify-start gap-5 lg:w-[70%]">
-                                <div class="skill-item skill">MongoDb</div>
-                                <div class="skill-item skill">Express.js</div>
-                                <div class="skill-item skill">React</div>
-                                <div class="skill-item skill">Node.js</div>
-                                <div class="skill-item skill">bootstrap</div>
-                                <div class="skill-item skill">Tailwind</div>
+                            <h4 className=' text-2xl mt-5  mb-5'>skills </h4>
+                            <div className="flex flex-wrap justify-start gap-5 lg:w-[70%]">
+                                <div className="skill-item skill">MongoDb</div>
+                                <div className="skill-item skill">Express.js</div>
+                                <div className="skill-item skill">React</div>
+                                <div className="skill-item skill">Node.js</div>
+                                <div className="skill-item skill">bootstrap</div>
+                                <div className="skill-item skill">Tailwind</div>
                             </div>
                             <div>
-                                <h4  className=' text-2xl my-5 text-[#e02f6b]'>Education</h4>
-                               <div className=' text-lg font-serif'> <h4>Education level : Secondary</h4>
-                                <h4>Exam/Degree Title : SSC</h4>
-                                <h4>Institution Name : sreerampur high school</h4>
-                                <h4>Passing year : 2017</h4></div>
+                                <h4 className=' text-2xl my-5 text-[#e02f6b]'>Education</h4>
+                                <div className=' text-lg font-serif'> <h4>Education level : Secondary</h4>
+                                    <h4>Exam/Degree Title : SSC</h4>
+                                    <h4>Institution Name : sreerampur high school</h4>
+                                    <h4>Passing year : 2017</h4></div>
 
                             </div>
                         </div>
@@ -66,7 +66,7 @@ const MyPortfolio = () => {
 
             </section>
             <section id='project' className='mt-5'>
-                <div class="section-title">
+                <div className="section-title">
                     <h2 className='pt-12'>Recent Project</h2>
                 </div>
                 <div className='container lg:flex justify-between gap-10 box-border '>
@@ -82,16 +82,16 @@ const MyPortfolio = () => {
                         <img className='img-border' src={project2} alt="" />
                         <h2 className=' text-xl font-sans mt-5'>Product Review Website</h2>
                         <div className='mt-5'>
-                        <a href='https://bike-review.netlify.app/' target='_blank' rel="noreferrer" className='BtnPortfolio mr-2'>view project</a>
-                        <a href='https://github.com/mahedi-imun/product-analytics-and-customer-reviews-' target='_blank' rel="noreferrer" className='BtnPortfolio mr-2'>view github</a>
+                            <a href='https://bike-review.netlify.app/' target='_blank' rel="noreferrer" className='BtnPortfolio mr-2'>view project</a>
+                            <a href='https://github.com/mahedi-imun/product-analytics-and-customer-reviews-' target='_blank' rel="noreferrer" className='BtnPortfolio mr-2'>view github</a>
                         </div>
                     </div>
                     <div className='lg:w-[700px]  mb-5'>
                         <img className='img-border' src={project3} alt="" />
                         <h2 className=' text-xl mt-5 font-sans'>wadding photography website</h2>
                         <div className='mt-5'>
-                        <a href='https://snapshots-studio.web.app/' target='_blank' rel="noreferrer" className='BtnPortfolio mr-2'>view project</a>
-                        <a href='https://github.com/mahedi-imun/Snapshots-studio' target='_blank' rel="noreferrer" className='BtnPortfolio mr-2'>view github</a>
+                            <a href='https://snapshots-studio.web.app/' target='_blank' rel="noreferrer" className='BtnPortfolio mr-2'>view project</a>
+                            <a href='https://github.com/mahedi-imun/Snapshots-studio' target='_blank' rel="noreferrer" className='BtnPortfolio mr-2'>view github</a>
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ import MyOrderTable from './MyOrderTable';
 const MyOrders = () => {
     const navigate = useNavigate()
     const [user, loading] = useAuthState(auth)
-    const { data:products,isLoading,refetch } = useQuery('order', () => fetch(`http://localhost:5000/order?userEmail=${user.email}`, {
+    const { data: products, isLoading, refetch } = useQuery('order', () => fetch(`http://localhost:5000/order?userEmail=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Barer ${localStorage.getItem('accessToken')}`
@@ -27,15 +27,15 @@ const MyOrders = () => {
         return <Loading></Loading>
     }
     return (
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div className="overflow-x-auto">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th></th>
                         <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Total</th>
-                        <th>cancel order</th>
+                        <th>cancel order/ transaction iD</th>
                         <th>pay</th>
                     </tr>
                 </thead>

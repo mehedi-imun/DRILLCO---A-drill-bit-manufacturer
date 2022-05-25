@@ -15,9 +15,11 @@ import ManageProduct from './components/Pages/Dashboard/ManageProduct';
 import MyOrders from './components/Pages/Dashboard/MyOrders';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
 import MyReview from './components/Pages/Dashboard/MyReview';
+import Payment from './components/Pages/Dashboard/Payment';
 import Home from './components/Pages/Home/Home';
 import MyPortfolio from './components/Pages/MyPortfolio/MyPortfolio';
 import NotFound from './components/Pages/NotFoundPage/NotFound';
+
 import Purchase from './components/Pages/Purchase/Purchase'
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
@@ -32,10 +34,12 @@ function App() {
         <Route path='/portfolio' element={<MyPortfolio/>}></Route>
         <Route path='/blog' element={<Blog/>}></Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
+        
         <Route path='/dashboard' element={<RequireAuth>
           <Dashboard/>
         </RequireAuth>}>
         <Route index element={ <MyOrders/>}></Route>
+        <Route path='payment/:id' element={<RequireAuth><Payment></Payment></RequireAuth>}></Route>
           <Route path='my-review' element={<MyReview />}></Route>
           <Route path='my-profile' element={<MyProfile />}></Route>
           <Route path='my-order' element={<MyOrders />}></Route>

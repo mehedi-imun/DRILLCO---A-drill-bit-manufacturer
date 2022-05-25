@@ -6,11 +6,11 @@ const ContactUs = () => {
             <h4 className=' text-3xl text-secondary text-center  mb-12'> Contact Us</h4>
             <div className='lg:flex'>
                 <div className='flex-1 flex justify-center items-center'>
-                    <div class="card w-[80%]  shadow ">
-                        <div class="card-body items-center text-center">
-                            <h2 class="card-title mb-5">contact us</h2>
-                            <input type="text" placeholder="your Name" class="input input-bordered input-sm w-full max-w-xs mb-5" />
-                            <textarea class="textarea bg-base-200 w-full max-w-xs" placeholder="Massage"></textarea>
+                    <div className="card w-[80%]  shadow ">
+                        <div className="card-body items-center text-center">
+                            <h2 className="card-title mb-5">contact us</h2>
+                            <input type="text" placeholder="your Name" className="input input-bordered input-sm w-full max-w-xs mb-5" />
+                            <textarea className="textarea bg-base-200 w-full max-w-xs" placeholder="Massage"></textarea>
                             <button className='btn btn-secondary btn-sm mt-6'>Contact</button>
                         </div>
                     </div>

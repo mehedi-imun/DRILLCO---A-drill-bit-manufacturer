@@ -4,7 +4,6 @@ import { BsFillStarFill } from 'react-icons/bs';
 
 const ReviewCard = ({ review }) => {
     const { name, description, rating } = review;
-    console.log(rating);
     return (
         <div className='border w-80 p-5 lg:p-0 rounded-md '>
             <div className=''>
