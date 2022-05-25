@@ -6,6 +6,7 @@ import RequireAdmin from './components/Pages/Authentications/RequireAdmin/Requir
 
 import RequireAuth from './components/Pages/Authentications/RequireAuth/RequireAuth';
 import Signup from './components/Pages/Authentications/SignUp/Signup';
+import Blog from './components/Pages/Blog/Blog';
 import AddProduct from './components/Pages/Dashboard/AddProduct';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import MakeAdmin from './components/Pages/Dashboard/MakeAdmin';
@@ -29,6 +30,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/portfolio' element={<MyPortfolio/>}></Route>
+        <Route path='/blog' element={<Blog/>}></Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path='/dashboard' element={<RequireAuth>
           <Dashboard/>

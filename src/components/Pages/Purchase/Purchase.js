@@ -75,13 +75,13 @@ const Purchase = () => {
                     <p className='text-2xl'>price : ${price} (per unit price) </p>
                     <div>
                         <p>Quantity:</p>
-                        <button onClick={() => handleMinusQuantity()} ><AiOutlineMinus /></button>
+                        <button className={error === 'min'? 'btn btn-xs btn-secondary btn-disabled':'btn btn-xs btn-secondary'} onClick={() => handleMinusQuantity()} ><AiOutlineMinus /></button>
                         <span className=' mx-2'>{quantity}</span>
-                        <button className='mt-2' onClick={() => handlePlusQuantity()}><AiOutlinePlus /></button>
+                        <button className={error === 'available'? 'available btn-disabled': 'mt-2 btn btn-xs btn-secondary'} onClick={() => handlePlusQuantity()}><AiOutlinePlus /></button>
                         <p className='mx-2 inline-block '>({availableQuantity} Pieces available) </p>
 
                     </div>
-                    <div className="card-actions ">
+                    <div className="card-actions mt-5 ">
                         <label onClick={() => handleSetProductModal()} htmlFor="purchase-modal" className="btn brn-secondary">checkout</label>
 
                     </div>
