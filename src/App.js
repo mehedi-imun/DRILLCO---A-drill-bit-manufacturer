@@ -15,6 +15,8 @@ import MyOrders from './components/Pages/Dashboard/MyOrders';
 import MyProfile from './components/Pages/Dashboard/MyProfile';
 import MyReview from './components/Pages/Dashboard/MyReview';
 import Home from './components/Pages/Home/Home';
+import MyPortfolio from './components/Pages/MyPortfolio/MyPortfolio';
+import NotFound from './components/Pages/NotFoundPage/NotFound';
 import Purchase from './components/Pages/Purchase/Purchase'
 import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
@@ -26,6 +28,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/portfolio' element={<MyPortfolio/>}></Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path='/dashboard' element={<RequireAuth>
           <Dashboard/>
@@ -51,6 +54,7 @@ function App() {
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
+        <Route path='*' element={<NotFound/>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
