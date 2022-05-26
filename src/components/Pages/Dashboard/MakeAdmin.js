@@ -12,6 +12,8 @@ const MakeAdmin = () => {
         }
     })
         .then(res => res.json()))
+
+    
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -34,6 +36,7 @@ const MakeAdmin = () => {
                             user={user}
                             index={index}
                             refetch={refetch}
+                       
                         >
 
                         </UserTable>)
