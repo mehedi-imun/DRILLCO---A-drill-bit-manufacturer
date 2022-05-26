@@ -70,7 +70,7 @@ const Purchase = () => {
                 <div className="card-body bg-indigo-50">
                     <h2 className="card-title">{name}</h2>
                     <p className='w-96'>{description}</p>
-                    
+
                     {error === 'min' && <p className='text-red-600'>Minimum order: {minQuantity} pieces</p>}
                     {error === 'available' && <p className='text-red-600'> not available{quantity} </p>}
                     <p className='text-2xl'>price : ${price} (per unit price) </p>
@@ -83,7 +83,7 @@ const Purchase = () => {
 
                     </div>
                     <div className="card-actions mt-5 ">
-                        <label onClick={() => handleSetProductModal()} htmlFor="purchase-modal" className={availableQuantity <1000 ? 'btn brn-secondary btn-disabled ' :'btn brn-secondary '}>checkout</label>
+                        <label onClick={() => handleSetProductModal()} htmlFor="purchase-modal" className={availableQuantity < 1000 ? 'btn brn-secondary btn-disabled ' : 'btn brn-secondary '}>checkout</label>
 
                     </div>
                 </div>

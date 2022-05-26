@@ -43,7 +43,7 @@ const MyOrderTable = ({ product, index, refetch }) => {
     }
     return (
         <tr>
-            
+
             <td>{productName.slice(0, 25)}</td>
             <td>{orderedQuantity}</td>
             <td>$ {price}</td>

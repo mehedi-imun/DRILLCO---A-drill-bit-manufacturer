@@ -14,30 +14,30 @@ const UserTable = ({ user, refetch, index }) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, i make it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`https://stark-ravine-05913.herokuapp.com/user/admin/${email}`, {
-            method: 'PUT', headers: {
-                'authorization': `Barer ${localStorage.getItem('accessToken')}`
-            }
-        }).then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    
-                    refetch()
-                    
-              Swal.fire(
-                'made!',
-                'Your are make admin.',
-                'success'
-              )
-                }
-            })
+                    method: 'PUT', headers: {
+                        'authorization': `Barer ${localStorage.getItem('accessToken')}`
+                    }
+                }).then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount > 0) {
+
+                            refetch()
+
+                            Swal.fire(
+                                'made!',
+                                'Your are make admin.',
+                                'success'
+                            )
+                        }
+                    })
 
 
 
             }
-          })
+        })
 
     }
     const handleRemoveAdmin = () => {
@@ -49,30 +49,30 @@ const UserTable = ({ user, refetch, index }) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`https://stark-ravine-05913.herokuapp.com/admin/${email}`, {
-            method: 'delete',
-            headers: {
-                'authorization': `Barer ${localStorage.getItem('accessToken')}`
+                    method: 'delete',
+                    headers: {
+                        'authorization': `Barer ${localStorage.getItem('accessToken')}`
+                    }
+                }).then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire(
+                                'Deleted!',
+                                'admin has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+
+
+
+
             }
-        }).then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    refetch()
-                    Swal.fire(
-                        'Deleted!',
-                        'admin has been deleted.',
-                        'success'
-                      )
-                }
-            })
-
-
-
-              
-            }
-          })
+        })
     }
     return (
         <tr>
@@ -85,12 +85,12 @@ const UserTable = ({ user, refetch, index }) => {
                 }
             </td>
             <td> {
-                role?  <button onClick={() => handleRemoveAdmin()} className="btn btn-sm btn-error">Remove admin</button> :
-                <button  className="btn btn-sm btn-disabled">normal user</button> 
-                }
+                role ? <button onClick={() => handleRemoveAdmin()} className="btn btn-sm btn-error">Remove admin</button> :
+                    <button className="btn btn-sm btn-disabled">normal user</button>
+            }
 
             </td>
-            
+
         </tr>
     );
 };
