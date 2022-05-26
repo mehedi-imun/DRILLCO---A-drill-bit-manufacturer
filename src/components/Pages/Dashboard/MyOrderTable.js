@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyOrderTable = ({ product, index, refetch}) => {
-    const { price, productName, orderedQuantity, userEmail ,_id,paid,transactionID } = product;
+    const { price, productName, orderedQuantity, userEmail ,_id,paid,transactionID,statusPending } = product;
     const navigate= useNavigate()
     const handleDEleteOrder = () => {
         Swal.fire({
@@ -47,12 +47,20 @@ const MyOrderTable = ({ product, index, refetch}) => {
             <td>{productName.slice(0, 25)}</td>
             <td>{orderedQuantity}</td>
             <td>$ {price}</td>
+            
             <td>
                 { paid ? <>{transactionID}</> : 
                     <button  onClick={() => handleDEleteOrder()} className="btn btn-sm  text-2xl">< FcCancel /></button>}
             </td>
             <td>
-                { paid ? <p>paid</p> :<button onClick={()=>navigate(`/dashboard/payment/${_id}`)} className="btn btn-sm  ">< MdOutlinePayment className='text-xl' /> pay </button>}
+                { paid ? <p>paid</p> : <button onClick={()=>navigate(`/dashboard/payment/${_id}`)} className="btn btn-sm  ">< MdOutlinePayment className='text-xl' /> pay </button>
+                
+                }
+            </td>
+            <td>
+                {
+                    statusPending ? " pending " : " shipped"
+                }
             </td>
         </tr>
     );

@@ -36,7 +36,9 @@ const MyOrders = () => {
                         <th>Quantity</th>
                         <th>Total</th>
                         <th>cancel order/ transaction iD</th>
-                        <th>pay</th>
+                        <th>payment</th>
+                        <th>status</th>
+
                     </tr>
                 </thead>
                 <tbody>

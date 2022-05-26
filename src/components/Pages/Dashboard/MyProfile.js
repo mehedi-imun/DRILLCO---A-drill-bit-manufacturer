@@ -102,11 +102,11 @@ const MyProfile = () => {
         return <Loading></Loading>
     }
     return (
-        <div class="card w-[80%] mt-12 bg-base-100 shadow-xl p">
+        <div class="card lg:w-[80%] mt-12 bg-base-100 shadow-xl p">
             <div class="card-body">
                 <ToastContainer></ToastContainer>
-                <div className=' flex'>
-                    <div className=' w-[25%]'>
+                <div className=' lg:flex'>
+                    <div className=' lg:w-[25%]'>
                         <img class="mask mask-circle w-[100px]" src={photoURL ? photoURL : profile} alt='' />
 
                         {
@@ -127,7 +127,7 @@ const MyProfile = () => {
                             !edit && <button onClick={() => handleEdit()} className=' btn btn-xs btn-secondary rounded-3xl mt-5'>Edit profile</button>
                         }
                     </div>
-                    <div className='w-[75%]'>
+                    <div className='lg:w-[75%]'>
                         <span class="card-title">Full name</span>
                         <h2 >{displayName}</h2>
                         <span class="card-title mt-5">Email</span>
@@ -201,18 +201,18 @@ const MyProfile = () => {
                                 !edit && <>
                                     <span class="card-title mt-5">education</span>
                                     <p className=' text-primary'> <p>
-                                        Your Education level : {usersData.eduData.eduLevel}.
-                                    </p> <p>Exam/Degree Title : {usersData.eduData.Degree}.</p>Institution Name : {usersData.eduData.Institution}.
-                                        <p> Passing year {usersData.eduData.Passing} </p>
+                                        Your Education level : {usersData?.eduData?.eduLevel}.
+                                    </p> <p>Exam/Degree Title : {usersData?.eduData?.Degree}.</p>Institution Name : {usersData?.eduData?.Institution}.
+                                        <p> Passing year {usersData?.eduData?.Passing} </p>
                                     </p>
                                     
                                     <span class="card-title mt-5">important links</span>
                                     <p class=" mt-5 ">LinkedIn: </p>
-                                    <a href={usersData.linkData.Linkedin} target='_blank' className=' link-hover text-blue-900 font-bold'>{usersData.linkData.Linkedin}</a>
+                                    <a href={usersData?.linkData?.Linkedin} target='_blank' className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.Linkedin}</a>
                                     <p class=" mt-5">gitHub: </p>
-                                    <a  target='_blank' href={usersData.linkData.gitHub} className=' link-hover text-blue-900 font-bold'>{usersData.linkData.gitHub}</a>
+                                    <a  target='_blank' href={usersData?.linkData?.gitHub} className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.gitHub}</a>
                                     <p class=" mt-5">stackoverflow: </p>
-                                    <a  target='_blank' href={usersData.linkData.stackoverflow} className=' link-hover text-blue-900 font-bold'>{usersData.linkData.stackoverflow}</a>
+                                    <a  target='_blank' href={usersData?.linkData?.stackoverflow} className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.stackoverflow}</a>
 
                                 </>
                             }

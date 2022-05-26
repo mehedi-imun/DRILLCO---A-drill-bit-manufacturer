@@ -18,6 +18,7 @@ const PurchaseModal = ({ product, quantity, setModal, refetch }) => {
             price: totalPrice,
             productName: name,
             orderedQuantity: quantity,
+            statusPending: true,
 
         }
         fetch('http://localhost:5000/order', {
