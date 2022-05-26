@@ -1,26 +1,57 @@
 import React from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const UserTable = ({ user, refetch, index }) => {
     const { email, role } = user;
 
     const handleMakeAdmin = () => {
 
-        fetch(`https://stark-ravine-05913.herokuapp.com/user/admin/${email}`, {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be make admin!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, i make it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://stark-ravine-05913.herokuapp.com/user/admin/${email}`, {
             method: 'PUT', headers: {
                 'authorization': `Barer ${localStorage.getItem('accessToken')}`
             }
         }).then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    toast.success('successfully make admin')
+                    
                     refetch()
+                    
+              Swal.fire(
+                'made!',
+                'Your are make admin.',
+                'success'
+              )
                 }
             })
 
+
+
+            }
+          })
+
     }
     const handleRemoveAdmin = () => {
-        fetch(`https://stark-ravine-05913.herokuapp.com/admin/${email}`, {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be delete admin!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://stark-ravine-05913.herokuapp.com/admin/${email}`, {
             method: 'delete',
             headers: {
                 'authorization': `Barer ${localStorage.getItem('accessToken')}`
@@ -29,9 +60,19 @@ const UserTable = ({ user, refetch, index }) => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     refetch()
-                    toast.error('delete admin')
+                    Swal.fire(
+                        'Deleted!',
+                        'admin has been deleted.',
+                        'success'
+                      )
                 }
             })
+
+
+
+              
+            }
+          })
     }
     return (
         <tr>
@@ -43,8 +84,13 @@ const UserTable = ({ user, refetch, index }) => {
                     className="btn btn-sm btn-secondary">Make Admin</button>
                 }
             </td>
-            <td><button onClick={() => handleRemoveAdmin()} className="btn btn-sm btn-error">Remove admin</button></td>
-            <ToastContainer></ToastContainer>
+            <td> {
+                role?  <button onClick={() => handleRemoveAdmin()} className="btn btn-sm btn-error">Remove admin</button> :
+                <button  className="btn btn-sm btn-disabled">normal user</button> 
+                }
+
+            </td>
+            
         </tr>
     );
 };

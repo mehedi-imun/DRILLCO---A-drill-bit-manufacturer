@@ -1,6 +1,6 @@
 # DRILLCO - A drill bit  manufacturer company website 
  
-This is Project Live Link [DRILLCO](https://github.com/facebook/create-react-app).
+This is Project Live Link [DRILLCO](https://drillco-87862.web.app/).
 
 ## description :  this is a full stack product manufacturer company website .user can create account email and password,or login / signUp google social login.user can purchase  product with credit card . user see her profile , and update her profile ,with add personal information. this website have a dashboard. for admin/user. user can see ony , all order, cancel order, pay order route, and add review.  Admin can see , add product, manage product, make admin, manage all order  , shipment process, admin profile , add dashboard, route. 
 

@@ -35,6 +35,7 @@ const ManageAllOrder = () => {
               key={order._id}
               order={order}
               index={index}
+              refetch={refetch}
             >
             </ManageOrderCard>)
 

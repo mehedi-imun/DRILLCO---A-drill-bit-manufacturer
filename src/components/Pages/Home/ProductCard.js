@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
     return (
         <div className='  flex justify-around'>
             <div className="card w-[300px] glass shadow-md">
-                <figure><img className='h-[200px] w-[100%]' src={img} alt="drill bit" /></figure>
+                <figure><img className=' w-[60%]' src={img} alt="drill bit" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name?.slice(0, 20)}</h2>
                     <p className=''>price: ${price} (per unit)</p>
