@@ -31,15 +31,15 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/portfolio' element={<MyPortfolio/>}></Route>
-        <Route path='/blog' element={<Blog/>}></Route>
+        <Route path='/portfolio' element={<MyPortfolio />}></Route>
+        <Route path='/blog' element={<Blog />}></Route>
         <Route path='/purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
-        
+
         <Route path='/dashboard' element={<RequireAuth>
-          <Dashboard/>
+          <Dashboard />
         </RequireAuth>}>
-        <Route index element={ <MyProfile/>}></Route>
-        <Route path='payment/:id' element={<RequireAuth><Payment></Payment></RequireAuth>}></Route>
+          <Route index element={<MyProfile />}></Route>
+          <Route path='payment/:id' element={<RequireAuth><Payment></Payment></RequireAuth>}></Route>
           <Route path='my-review' element={<MyReview />}></Route>
           <Route path='my-profile' element={<MyProfile />}></Route>
           <Route path='my-order' element={<MyOrders />}></Route>
@@ -59,8 +59,8 @@ function App() {
 
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='/signup' element={<Signup/>}></Route>
-        <Route path='*' element={<NotFound/>}></Route>
+        <Route path='/signup' element={<Signup />}></Route>
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
       <Footer></Footer>
     </div>

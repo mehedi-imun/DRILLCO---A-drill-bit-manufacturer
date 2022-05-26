@@ -4,9 +4,9 @@ import { MdOutlinePayment } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const MyOrderTable = ({ product, index, refetch}) => {
-    const { price, productName, orderedQuantity, userEmail ,_id,paid,transactionID,statusPending } = product;
-    const navigate= useNavigate()
+const MyOrderTable = ({ product, index, refetch }) => {
+    const { price, productName, orderedQuantity, userEmail, _id, paid, transactionID, statusPending } = product;
+    const navigate = useNavigate()
     const handleDEleteOrder = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -19,7 +19,7 @@ const MyOrderTable = ({ product, index, refetch}) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                const ulr = `http://localhost:5000/order/${userEmail}`;
+                const ulr = `https://stark-ravine-05913.herokuapp.com/order/${userEmail}`;
                 fetch(ulr, {
                     method: 'DELETE',
                     headers: {
@@ -43,18 +43,18 @@ const MyOrderTable = ({ product, index, refetch}) => {
     }
     return (
         <tr>
-            <th>{index + 1}</th>
+            
             <td>{productName.slice(0, 25)}</td>
             <td>{orderedQuantity}</td>
             <td>$ {price}</td>
-            
+
             <td>
-                { paid ? <>{transactionID}</> : 
-                    <button  onClick={() => handleDEleteOrder()} className="btn btn-sm  text-2xl">< FcCancel /></button>}
+                {paid ? <>{transactionID}</> :
+                    <button onClick={() => handleDEleteOrder()} className="btn btn-sm  text-2xl">< FcCancel /></button>}
             </td>
             <td>
-                { paid ? <p>paid</p> : <button onClick={()=>navigate(`/dashboard/payment/${_id}`)} className="btn btn-sm  ">< MdOutlinePayment className='text-xl' /> pay </button>
-                
+                {paid ? <p>paid</p> : <button onClick={() => navigate(`/dashboard/payment/${_id}`)} className="btn btn-sm  ">< MdOutlinePayment className='text-sm' /> <span className=' text-sm'>pay</span> </button>
+
                 }
             </td>
             <td>

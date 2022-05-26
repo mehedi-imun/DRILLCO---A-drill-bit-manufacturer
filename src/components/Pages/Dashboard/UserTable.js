@@ -1,12 +1,12 @@
 import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 
-const UserTable = ({ user, refetch,index }) => {
+const UserTable = ({ user, refetch, index }) => {
     const { email, role } = user;
 
     const handleMakeAdmin = () => {
 
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://stark-ravine-05913.herokuapp.com/user/admin/${email}`, {
             method: 'PUT', headers: {
                 'authorization': `Barer ${localStorage.getItem('accessToken')}`
             }
@@ -19,23 +19,23 @@ const UserTable = ({ user, refetch,index }) => {
             })
 
     }
-    const handleRemoveAdmin = ()=>{
-        fetch(`http://localhost:5000/admin/${email}`,{
-            method:'delete',
+    const handleRemoveAdmin = () => {
+        fetch(`https://stark-ravine-05913.herokuapp.com/admin/${email}`, {
+            method: 'delete',
             headers: {
                 'authorization': `Barer ${localStorage.getItem('accessToken')}`
             }
         }).then(res => res.json())
-        .then(data =>{
-            if(data.deletedCount >0){
-                refetch()
-                toast.error('delete admin')
-            }
-        })
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch()
+                    toast.error('delete admin')
+                }
+            })
     }
     return (
         <tr>
-            <th>{index+1}</th>
+            <th>{index + 1}</th>
             <td>{email}</td>
             <td>
                 {role || <button
@@ -43,7 +43,7 @@ const UserTable = ({ user, refetch,index }) => {
                     className="btn btn-sm btn-secondary">Make Admin</button>
                 }
             </td>
-            <td><button onClick={()=>handleRemoveAdmin()} className="btn btn-sm btn-error">Remove admin</button></td>
+            <td><button onClick={() => handleRemoveAdmin()} className="btn btn-sm btn-error">Remove admin</button></td>
             <ToastContainer></ToastContainer>
         </tr>
     );

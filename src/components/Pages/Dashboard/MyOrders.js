@@ -8,7 +8,7 @@ import MyOrderTable from './MyOrderTable';
 const MyOrders = () => {
     const navigate = useNavigate()
     const [user, loading] = useAuthState(auth)
-    const { data: products, isLoading, refetch } = useQuery('order', () => fetch(`http://localhost:5000/order?userEmail=${user.email}`, {
+    const { data: products, isLoading, refetch } = useQuery('order', () => fetch(`https://stark-ravine-05913.herokuapp.com/order?userEmail=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Barer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const MyOrders = () => {
             <table className="table w-full">
                 <thead>
                     <tr>
-                        <th></th>
+                       
                         <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Total</th>

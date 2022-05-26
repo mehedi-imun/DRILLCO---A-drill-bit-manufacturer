@@ -5,7 +5,7 @@ import UserTable from './UserTable';
 
 const MakeAdmin = () => {
 
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://stark-ravine-05913.herokuapp.com/users', {
         method: 'GET',
         headers: {
             'authorization': `Barer ${localStorage.getItem('accessToken')}`
@@ -13,7 +13,7 @@ const MakeAdmin = () => {
     })
         .then(res => res.json()))
 
-    
+
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -36,7 +36,7 @@ const MakeAdmin = () => {
                             user={user}
                             index={index}
                             refetch={refetch}
-                       
+
                         >
 
                         </UserTable>)

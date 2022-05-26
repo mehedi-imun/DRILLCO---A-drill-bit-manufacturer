@@ -1,17 +1,22 @@
 import React from 'react';
 
 const ManageOrderCard = ({ order, index, refetch }) => {
-    const { productName, orderedQuantity, statusPending, paid,_id } = order;
+    const { productName, orderedQuantity, statusPending, paid, _id } = order;
 
-    const handleShipment = ()=>{
-        fetch(`http://localhost:5000/order-status/${_id}`, {
+    const handleShipment = () => {
+        fetch(`https://stark-ravine-05913.herokuapp.com/order-status/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         }).then(res => res.json())
-        .then(data => console.log(data))
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch()
+
+                }
+            })
 
     }
 
@@ -21,21 +26,21 @@ const ManageOrderCard = ({ order, index, refetch }) => {
             <td>{productName?.slice(0, 15)}</td>
             <td>{orderedQuantity}</td>
             <td>
-                { paid ? 
-                <>
-                
-                { statusPending ?  <button 
-                    onClick={()=>handleShipment()}
-                    className='btn btn-xs btn-secondary'>pending</button> : 
-                    <button className='btn btn-xs btn-secondary'>sipped</button>
+                {paid ?
+                    <>
+
+                        {statusPending ? <button
+                            onClick={() => handleShipment()}
+                            className='btn btn-xs btn-secondary'>pending</button> :
+                            <button className='btn btn-xs btn-secondary'>sipped</button>
+                        }
+
+                    </> :
+                    <p>Not paid</p>
+
                 }
-                
-                </> :
-                <p>Not paid</p>
-                
-           }
-           </td>
-          
+            </td>
+
         </tr>
     );
 };

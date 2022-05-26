@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 
 const Products = () => {
     const { isLoading, data: products } = useQuery('drillco', () =>
-        fetch('http://localhost:5000/products', {
+        fetch('https://stark-ravine-05913.herokuapp.com/products', {
             method: 'GET',
         })
             .then(res => res.json())
@@ -26,7 +26,7 @@ const Products = () => {
                     </ProductCard>)
                 }
             </div>
-           <dir className='text-right px-12'> <button className='btn btn-link text-secondary'>see more</button></dir>
+            <dir className='text-right px-12'> <button className='btn btn-link text-secondary'>see more</button></dir>
         </div>
     );
 };

@@ -21,7 +21,7 @@ const PurchaseModal = ({ product, quantity, setModal, refetch }) => {
             statusPending: true,
 
         }
-        fetch('http://localhost:5000/order', {
+        fetch('https://stark-ravine-05913.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -36,7 +36,7 @@ const PurchaseModal = ({ product, quantity, setModal, refetch }) => {
 
 
                     const updateQuantity = availableQuantity - quantity;
-                    fetch(`http://localhost:5000/update-quantity/${_id}`, {
+                    fetch(`https://stark-ravine-05913.herokuapp.com/update-quantity/${_id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

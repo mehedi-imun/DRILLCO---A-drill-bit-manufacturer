@@ -4,7 +4,7 @@ import ReviewCard from './ReviewCard';
 
 const Reviews = () => {
 
-    const { data: reviews } = useQuery('reviews', () => fetch('http://localhost:5000/reviews',).then(res => res.json()))
+    const { data: reviews } = useQuery('reviews', () => fetch('https://stark-ravine-05913.herokuapp.com/reviews',).then(res => res.json()))
     return (
         <div className='px-12'>
             <div className="card w-full mx-auto bg-base-100 shadow-xl mt-12  ">

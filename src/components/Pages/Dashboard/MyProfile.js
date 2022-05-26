@@ -17,7 +17,7 @@ const MyProfile = () => {
     const { displayName, email, photoURL } = user;
 
     const { isLoading, error, data: usersData, refetch } = useQuery('user-data', () =>
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://stark-ravine-05913.herokuapp.com/user/${email}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -51,7 +51,7 @@ const MyProfile = () => {
     const onSubmitEdu = eduData => {
         const updatedDoc = { eduData };
 
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://stark-ravine-05913.herokuapp.com/user/${email}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -76,7 +76,7 @@ const MyProfile = () => {
     let { register: registerLink, handleSubmit: handleLinkSubmit } = useForm();
     const onSubmitLink = linkData => {
         const updatedDoc = { linkData };
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://stark-ravine-05913.herokuapp.com/user/${email}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -102,12 +102,12 @@ const MyProfile = () => {
         return <Loading></Loading>
     }
     return (
-        <div class="card lg:w-[80%] mt-12 bg-base-100 shadow-xl p">
-            <div class="card-body">
+        <div className="card lg:w-[80%] mt-12 bg-base-100 shadow-xl p">
+            <div className="card-body">
                 <ToastContainer></ToastContainer>
                 <div className=' lg:flex'>
                     <div className=' lg:w-[25%]'>
-                        <img class="mask mask-circle w-[100px]" src={photoURL ? photoURL : profile} alt='' />
+                        <img className="mask mask-circle w-[100px]" src={photoURL ? photoURL : profile} alt='' />
 
                         {
                             edit && <>
@@ -128,36 +128,36 @@ const MyProfile = () => {
                         }
                     </div>
                     <div className='lg:w-[75%]'>
-                        <span class="card-title">Full name</span>
+                        <span className="card-title">Full name</span>
                         <h2 >{displayName}</h2>
-                        <span class="card-title mt-5">Email</span>
+                        <span className="card-title mt-5">Email</span>
                         <p>{email}</p>
                         <div>
                             {
                                 edit && <>
-                                    <div class="divider"></div>
+                                    <div className="divider"></div>
                                     <h4>update info</h4>
                                     <p> click edit education or important link</p>
                                     {
                                         education &&
                                         <form onSubmit={handleEduSubmit(onSubmitEdu)} >
 
-                                            <label class=" text-info mt-5">
+                                            <label className=" text-info mt-5">
                                                 <p>your Education level</p>
                                             </label>
-                                            <input {...register("eduLevel")} type="text" class="input input-bordered input-xs w-full max-w-xs" />
-                                            <label class=" text-info mt-5">
+                                            <input {...register("eduLevel")} type="text" className="input input-bordered input-xs w-full max-w-xs" />
+                                            <label className=" text-info mt-5">
                                                 <p>Exam/Degree Title</p>
                                             </label>
-                                            <input {...register("Degree")} type="text" class="input input-bordered input-xs w-full max-w-xs" />
-                                            <label class=" text-info mt-5">
+                                            <input {...register("Degree")} type="text" className="input input-bordered input-xs w-full max-w-xs" />
+                                            <label className=" text-info mt-5">
                                                 <p>Institution Name</p>
                                             </label>
-                                            <input {...register("Institution")} type="text" class="input input-bordered input-xs w-full max-w-xs" />
-                                            <label class=" text-info mt-5">
+                                            <input {...register("Institution")} type="text" className="input input-bordered input-xs w-full max-w-xs" />
+                                            <label className=" text-info mt-5">
                                                 <p>Passing year</p>
                                             </label>
-                                            <input {...register("Passing")} type="number" class="input input-bordered input-xs w-full max-w-xs" />
+                                            <input {...register("Passing")} type="number" className="input input-bordered input-xs w-full max-w-xs" />
                                             <br />
                                             <input type='submit' className=' btn btn-xs btn-primary my-3 ' value='update edu'></input>
 
@@ -168,18 +168,18 @@ const MyProfile = () => {
                                         link && <>
                                             <form onSubmit={handleLinkSubmit(onSubmitLink)} >
 
-                                                <label class=" text-info mt-5">
+                                                <label className=" text-info mt-5">
                                                     <p>your Linkedin Profile link</p>
                                                 </label>
-                                                <input {...registerLink("Linkedin")} type="text" class="input input-bordered input-xs w-full max-w-xs" />
-                                                <label class=" text-info mt-5">
+                                                <input {...registerLink("Linkedin")} type="text" className="input input-bordered input-xs w-full max-w-xs" />
+                                                <label className=" text-info mt-5">
                                                     <p>your gitHub Profile link</p>
                                                 </label>
-                                                <input {...registerLink("gitHub")} type="text" class="input input-bordered input-xs w-full max-w-xs" />
-                                                <label class=" text-info mt-5">
+                                                <input {...registerLink("gitHub")} type="text" className="input input-bordered input-xs w-full max-w-xs" />
+                                                <label className=" text-info mt-5">
                                                     <p>your stackoverflow Profile link</p>
                                                 </label>
-                                                <input {...registerLink("stackoverflow")} type="text" class="input input-bordered input-xs w-full max-w-xs" />
+                                                <input {...registerLink("stackoverflow")} type="text" className="input input-bordered input-xs w-full max-w-xs" />
                                                 <br />
                                                 <input type='submit' className=' btn btn-xs btn-primary my-3' value='update link'></input>
 
@@ -199,20 +199,20 @@ const MyProfile = () => {
 
                             {
                                 !edit && <>
-                                    <span class="card-title mt-5">education</span>
+                                    <span className="card-title mt-5">education</span>
                                     <p className=' text-primary'> <p>
                                         Your Education level : {usersData?.eduData?.eduLevel}.
                                     </p> <p>Exam/Degree Title : {usersData?.eduData?.Degree}.</p>Institution Name : {usersData?.eduData?.Institution}.
                                         <p> Passing year {usersData?.eduData?.Passing} </p>
                                     </p>
-                                    
-                                    <span class="card-title mt-5">important links</span>
-                                    <p class=" mt-5 ">LinkedIn: </p>
+
+                                    <span className="card-title mt-5">important links</span>
+                                    <p className=" mt-5 ">LinkedIn: </p>
                                     <a href={usersData?.linkData?.Linkedin} target='_blank' className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.Linkedin}</a>
-                                    <p class=" mt-5">gitHub: </p>
-                                    <a  target='_blank' href={usersData?.linkData?.gitHub} className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.gitHub}</a>
-                                    <p class=" mt-5">stackoverflow: </p>
-                                    <a  target='_blank' href={usersData?.linkData?.stackoverflow} className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.stackoverflow}</a>
+                                    <p className=" mt-5">gitHub: </p>
+                                    <a target='_blank' href={usersData?.linkData?.gitHub} className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.gitHub}</a>
+                                    <p className=" mt-5">stackoverflow: </p>
+                                    <a target='_blank' href={usersData?.linkData?.stackoverflow} className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.stackoverflow}</a>
 
                                 </>
                             }
