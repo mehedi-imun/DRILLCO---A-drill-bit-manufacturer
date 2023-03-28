@@ -19,7 +19,7 @@ const MyOrderTable = ({ product, index, refetch }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                const ulr = `https://stark-ravine-05913.herokuapp.com/order/${userEmail}`;
+                const ulr = `https://drillco.onrender.com/order/${userEmail}`;
                 fetch(ulr, {
                     method: 'DELETE',
                     headers: {

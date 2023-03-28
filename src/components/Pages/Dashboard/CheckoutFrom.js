@@ -1,5 +1,5 @@
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import { CardElement, useStripe, useElements, } from '@stripe/react-stripe-js';
 import { toast, ToastContainer } from 'react-toastify';
 const CheckoutFrom = ({ data }) => {
   const { userName, userEmail, price, _id } = data;
@@ -12,7 +12,7 @@ const CheckoutFrom = ({ data }) => {
   const elements = useElements();
 
   useEffect(() => {
-    fetch("https://stark-ravine-05913.herokuapp.com/create-payment-intent", {
+    fetch("https://drillco.onrender.com/create-payment-intent", {
       method: "POST",
       headers: {
         'authorization': `Barer ${localStorage.getItem('accessToken')}`,
@@ -73,7 +73,7 @@ const CheckoutFrom = ({ data }) => {
           product: _id
         };
         if (paymentIntent.id) {
-          fetch(`https://stark-ravine-05913.herokuapp.com/payment-booking/${_id}`, {
+          fetch(`https://drillco.onrender.com/payment-booking/${_id}`, {
             method: 'PATCH',
             headers: {
               'authorization': `Barer ${localStorage.getItem('accessToken')}`,

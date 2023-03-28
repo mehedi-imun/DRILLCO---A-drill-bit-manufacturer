@@ -8,7 +8,7 @@ import MyOrderTable from './MyOrderTable';
 const MyOrders = () => {
     const navigate = useNavigate()
     const [user, loading] = useAuthState(auth)
-    const { data: products, isLoading, refetch } = useQuery('order', () => fetch(`https://stark-ravine-05913.herokuapp.com/order?userEmail=${user.email}`, {
+    const { data: products, isLoading, refetch } = useQuery('order', () => fetch(`https://drillco.onrender.com/order?userEmail=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Barer ${localStorage.getItem('accessToken')}`

@@ -16,7 +16,7 @@ const UserTable = ({ user, refetch, index }) => {
             confirmButtonText: 'Yes, i make it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://stark-ravine-05913.herokuapp.com/user/admin/${email}`, {
+                fetch(`https://drillco.onrender.com/user/admin/${email}`, {
                     method: 'PUT', headers: {
                         'authorization': `Barer ${localStorage.getItem('accessToken')}`
                     }
@@ -51,7 +51,7 @@ const UserTable = ({ user, refetch, index }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://stark-ravine-05913.herokuapp.com/admin/${email}`, {
+                fetch(`https://drillco.onrender.com/admin/${email}`, {
                     method: 'delete',
                     headers: {
                         'authorization': `Barer ${localStorage.getItem('accessToken')}`

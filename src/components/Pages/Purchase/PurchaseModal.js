@@ -1,9 +1,9 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../firebase.init';
-import Loading from '../../Shared/Loading/Loading';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 const PurchaseModal = ({ product, quantity, setModal, refetch }) => {
     const { register, handleSubmit, reset } = useForm();
     const [user, loading] = useAuthState(auth);
@@ -21,7 +21,7 @@ const PurchaseModal = ({ product, quantity, setModal, refetch }) => {
             statusPending: true,
 
         }
-        fetch('https://stark-ravine-05913.herokuapp.com/order', {
+        fetch('https://drillco.onrender.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -36,7 +36,7 @@ const PurchaseModal = ({ product, quantity, setModal, refetch }) => {
 
 
                     const updateQuantity = availableQuantity - quantity;
-                    fetch(`https://stark-ravine-05913.herokuapp.com/update-quantity/${_id}`, {
+                    fetch(`https://drillco.onrender.com/update-quantity/${_id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

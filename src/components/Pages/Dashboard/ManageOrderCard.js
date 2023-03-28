@@ -4,7 +4,7 @@ const ManageOrderCard = ({ order, index, refetch }) => {
     const { productName, orderedQuantity, statusPending, paid, _id } = order;
 
     const handleShipment = () => {
-        fetch(`https://stark-ravine-05913.herokuapp.com/order-status/${_id}`, {
+        fetch(`https://drillco.onrender.com/order-status/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

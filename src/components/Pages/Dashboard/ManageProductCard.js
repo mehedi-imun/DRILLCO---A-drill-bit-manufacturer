@@ -16,7 +16,7 @@ const ManageProductCard = ({ product, refetch }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                const ulr = `https://stark-ravine-05913.herokuapp.com/product/${_id}`;
+                const ulr = `https://drillco.onrender.com/product/${_id}`;
                 fetch(ulr, {
                     method: 'DELETE',
                     headers: {

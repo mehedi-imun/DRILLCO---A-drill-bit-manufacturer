@@ -5,7 +5,7 @@ import ManageProductCard from './ManageProductCard';
 
 const ManageProduct = () => {
     const { isLoading, data: products, refetch } = useQuery('product', () =>
-        fetch('https://stark-ravine-05913.herokuapp.com/products', {
+        fetch('https://drillco.onrender.com/products', {
             method: 'GET',
         })
             .then(res => res.json())

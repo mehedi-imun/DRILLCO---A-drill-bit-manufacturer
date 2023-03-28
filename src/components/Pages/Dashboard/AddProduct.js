@@ -7,7 +7,7 @@ const AddProduct = () => {
 
     const onSubmit = async (data) => {
         const product = data;
-        fetch('https://stark-ravine-05913.herokuapp.com/add-product', {
+        fetch('https://drillco.onrender.com/add-product', {
             method: 'POST',
             headers: {
                 'authorization': `Barer ${localStorage.getItem('accessToken')}`,

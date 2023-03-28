@@ -1,15 +1,15 @@
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
-import { Elements, } from '@stripe/react-stripe-js';
-import CheckoutForm from './CheckoutFrom'
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import Loading from '../../Shared/Loading/Loading'
-import { loadStripe } from '@stripe/stripe-js';
+import Loading from '../../Shared/Loading/Loading';
+import CheckoutForm from './CheckoutFrom';
 const stripePromise = loadStripe('pk_test_51L0Z9NHKPkPGbWfR23AenemDc8oGBjTTBB42S1xTYRTBGrzG8aYDlz1YXqSl0E2lB5xVJ0OfJlX6yifY384ot6Q200Q65Ed65y');
 
 const Payment = () => {
     const { id } = useParams()
-    const url = `https://stark-ravine-05913.herokuapp.com/order/${id}`;
+    const url = `https://drillco.onrender.com/order/${id}`;
     const { data, isLoading } = useQuery(['booking', id], () => fetch(url, {
         method: 'GET',
         headers: {

@@ -5,7 +5,7 @@ import ManageOrderCard from './ManageOrderCard';
 
 const ManageAllOrder = () => {
   const { data: orders, isLoading, refetch } = useQuery('order', () =>
-    fetch(`https://stark-ravine-05913.herokuapp.com/all-order`, {
+    fetch(`https://drillco.onrender.com/all-order`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',

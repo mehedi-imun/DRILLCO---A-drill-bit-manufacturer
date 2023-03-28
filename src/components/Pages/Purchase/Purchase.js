@@ -1,19 +1,19 @@
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
-import Loading from '../../Shared/Loading/Loading';
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
-import PurchaseModal from './PurchaseModal';
 import { ToastContainer } from 'react-toastify';
-import { signOut } from 'firebase/auth';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
+import PurchaseModal from './PurchaseModal';
 const Purchase = () => {
     const navigate = useNavigate()
     const [error, setError] = useState(``)
     const [quantity, setQuantity] = useState(1000)
     const [modal, setModal] = useState(null)
     const { id } = useParams()
-    const url = `https://stark-ravine-05913.herokuapp.com/product/${id}`
+    const url = `https://drillco.onrender.com/product/${id}`
 
     const { data: product, isLoading, refetch } = useQuery('product', () => fetch(url, {
         method: 'GET',

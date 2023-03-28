@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../firebase.init';
-import Loading from '../../Shared/Loading/Loading';
-import profile from '../../.././assets/images/avater.png'
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { data } from 'autoprefixer';
+import profile from '../../.././assets/images/avater.png';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 const MyProfile = () => {
     const navigate = useNavigate()
     const [user, loading] = useAuthState(auth);
@@ -17,7 +16,7 @@ const MyProfile = () => {
     const { displayName, email, photoURL } = user;
 
     const { isLoading, error, data: usersData, refetch } = useQuery('user-data', () =>
-        fetch(`https://stark-ravine-05913.herokuapp.com/user/${email}`, {
+        fetch(`https://drillco.onrender.com/user/${email}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -51,7 +50,7 @@ const MyProfile = () => {
     const onSubmitEdu = eduData => {
         const updatedDoc = { eduData };
 
-        fetch(`https://stark-ravine-05913.herokuapp.com/user/${email}`, {
+        fetch(`https://drillco.onrender.com/user/${email}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -76,7 +75,7 @@ const MyProfile = () => {
     let { register: registerLink, handleSubmit: handleLinkSubmit } = useForm();
     const onSubmitLink = linkData => {
         const updatedDoc = { linkData };
-        fetch(`https://stark-ravine-05913.herokuapp.com/user/${email}`, {
+        fetch(`https://drillco.onrender.com/user/${email}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -208,11 +207,11 @@ const MyProfile = () => {
 
                                     <span className="card-title mt-5">important links</span>
                                     <p className=" mt-5 ">LinkedIn: </p>
-                                    <a href={usersData?.linkData?.Linkedin} target='_blank' className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.Linkedin}</a>
+                                    <a href={usersData?.linkData?.Linkedin} target='_blank' className=' link-hover text-blue-900 font-bold' rel="noreferrer">{usersData?.linkData?.Linkedin}</a>
                                     <p className=" mt-5">gitHub: </p>
-                                    <a target='_blank' href={usersData?.linkData?.gitHub} className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.gitHub}</a>
+                                    <a target='_blank' href={usersData?.linkData?.gitHub} className=' link-hover text-blue-900 font-bold' rel="noreferrer">{usersData?.linkData?.gitHub}</a>
                                     <p className=" mt-5">stackoverflow: </p>
-                                    <a target='_blank' href={usersData?.linkData?.stackoverflow} className=' link-hover text-blue-900 font-bold'>{usersData?.linkData?.stackoverflow}</a>
+                                    <a target='_blank' href={usersData?.linkData?.stackoverflow} className=' link-hover text-blue-900 font-bold' rel="noreferrer">{usersData?.linkData?.stackoverflow}</a>
 
                                 </>
                             }

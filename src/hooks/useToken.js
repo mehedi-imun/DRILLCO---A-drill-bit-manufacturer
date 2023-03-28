@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 const useToken = (user) => {
     const [token, setToken] = useState('')
@@ -9,7 +9,7 @@ const useToken = (user) => {
             email: email,
         };
         if (email) {
-            fetch(`https://stark-ravine-05913.herokuapp.com/users/${email}`, {
+            fetch(`https://drillco.onrender.com/users/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

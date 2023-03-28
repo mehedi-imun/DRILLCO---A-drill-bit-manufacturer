@@ -15,7 +15,7 @@ const MyReview = () => {
         }
 
         if (rating <= 5) {
-            fetch('https://stark-ravine-05913.herokuapp.com/review', {
+            fetch('https://drillco.onrender.com/review', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

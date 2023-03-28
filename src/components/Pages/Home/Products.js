@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 
 const Products = () => {
     const { isLoading, data: products } = useQuery('drillco', () =>
-        fetch('https://stark-ravine-05913.herokuapp.com/products', {
+        fetch('https://drillco.onrender.com/products', {
             method: 'GET',
         })
             .then(res => res.json())
